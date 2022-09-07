@@ -57,34 +57,6 @@ describe('Mammut Website POC', () => {
     })
 
   })
-
-  context('Validating the UI with CSS and class', ()=>{
-
-    it('Out-of-stock product should have grey background color', ()=>{
-      cy.visit('/products/1010-29510-00674/stoney-hs-jacket-men')
-      cy.on('uncaught:exception', (e, runnable)=>{
-        console.log('error is', e)
-        console.log('runnable', runnable)
-        if(e.message.includes("Unexpected token '<'")){
-          return false
-        }
-      })
-      cy.get('.PDPIntroControlsList_outOfStock__vlg1c').should('have.css','background-color', 'rgb(240, 240, 240)')
-    })
-  
-    it('Product added to the wishlist should have active bookmark icon class',()=>{
-      cy.visit('/category/5819-10/jackets-and-vests')
-      cy.on('uncaught:exception', (e, runnable)=>{
-        console.log('error is', e)
-        console.log('runnable', runnable)
-        return false
-      })
-      cy.get(':nth-child(1) > .ProductCardInfo_infoWrapper__SGFdX > .ProductCardInfo_info__LNE2N > .ProductCardInfo_inner__98oqx > .ProductCardInfo_bookmarkButtonPosition__Re7I7 > .BookmarkButton_container__TKyRx > .BookmarkIcon_container__m4xE3').click().then(($el)=>{
-        expect($el).to.have.class('BookmarkIcon_isActive__hzdH6')
-      })
-    })
-  
-  })
   
 
   context('Testing add-to-cart from API and UI', ()=>{
@@ -144,7 +116,34 @@ describe('Mammut Website POC', () => {
 
   })
 
+  context('Validating the UI with CSS and class', ()=>{
 
+    it('Out-of-stock product should have grey background color', ()=>{
+      cy.visit('/products/1010-29510-00674/stoney-hs-jacket-men')
+      cy.on('uncaught:exception', (e, runnable)=>{
+        console.log('error is', e)
+        console.log('runnable', runnable)
+        if(e.message.includes("Unexpected token '<'")){
+          return false
+        }
+      })
+      cy.get('.PDPIntroControlsList_outOfStock__vlg1c').should('have.css','background-color', 'rgb(240, 240, 240)')
+    })
+  
+    it('Product added to the wishlist should have active bookmark icon class',()=>{
+      cy.visit('/category/5819-10/jackets-and-vests')
+      cy.on('uncaught:exception', (e, runnable)=>{
+        console.log('error is', e)
+        console.log('runnable', runnable)
+        return false
+      })
+      cy.get(':nth-child(1) > .ProductCardInfo_infoWrapper__SGFdX > .ProductCardInfo_info__LNE2N > .ProductCardInfo_inner__98oqx > .ProductCardInfo_bookmarkButtonPosition__Re7I7 > .BookmarkButton_container__TKyRx > .BookmarkIcon_container__m4xE3').click().then(($el)=>{
+        expect($el).to.have.class('BookmarkIcon_isActive__hzdH6')
+      })
+    })
+  
+  })
+  
   context.skip('Visual testing Mammut landing page',() => {
 
     beforeEach(() => {
