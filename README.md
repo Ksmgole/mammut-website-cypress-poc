@@ -7,8 +7,8 @@ This repo is a the proof-of-concept for the frontend testing of Mammut website u
 - npm install
 
 #Running tests
-- To run on testrunner npm run start
-- To run headless npm run build
+- To run on testrunner **npm run start**
+- To run headless **npm run build**
 
 #Folder structure
 - Fixtures: Test data are stored in fixture JSON files. 
